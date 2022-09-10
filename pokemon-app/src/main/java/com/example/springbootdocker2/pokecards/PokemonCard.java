@@ -17,13 +17,13 @@ import javax.persistence.*;
 
 public class PokemonCard {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id",nullable = false)
     private long id;
 
     @Column(name = "name",nullable = false)
     private String name;
 
-    @Column(name = "description",nullable = false)
+    @Column(name = "description",nullable = false,length = 1000)
     private String description;
 
     @Column(name = "hp",nullable = false)
