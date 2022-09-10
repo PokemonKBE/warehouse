@@ -1,8 +1,18 @@
 package com.example.springbootdocker2.pokecards;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.List;
 
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity
+@Table(name = "pokemondeck")
 public class PokemonCardDeck {
 
     @Id
