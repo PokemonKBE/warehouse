@@ -8,6 +8,7 @@ public class SpringBootDocker2Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootDocker2Application.class, args);
+
 	}
 
 }
