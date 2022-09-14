@@ -25,12 +25,12 @@ public class PokemonCardController {
 
 
 
-    @GetMapping("/Pokemon")
+    @GetMapping("/pokemon-card")
     public List<PokemonCard> fetchPokemonCards(){
         return cardRepository.findAll();
     }
 
-    @GetMapping("/Card")
+    @GetMapping("/pokemon-deck")
     public List<PokemonCardDeck> fetchPokemonCardDecks(){
         return deckRepository.findAll();
     }

@@ -16,7 +16,7 @@ import javax.persistence.*;
 @Builder
 @Entity
 @Table(name = "pokemon")
-@JsonPropertyOrder({"ID","Name","Description","HP","Type","Stage","Expansion","Rarity","Number","Illustrator","Price"})
+@JsonPropertyOrder({"id","name","description","hp","type","stage","expansion","rarity","number","illustrator","price"})
 //ID,Name,Description,HP,Type,Stage,Expansion,Rarity,Number,Illustrator,Price
 public class PokemonCard {
     @Id
