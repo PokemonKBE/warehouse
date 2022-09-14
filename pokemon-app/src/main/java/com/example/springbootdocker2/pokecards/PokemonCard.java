@@ -4,6 +4,7 @@ package com.example.springbootdocker2.pokecards;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.*;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import javax.persistence.*;
 
@@ -15,41 +16,41 @@ import javax.persistence.*;
 @Builder
 @Entity
 @Table(name = "pokemon")
-@JsonPropertyOrder({"ID","Name","Description","HP","Type","Stage","Expansion","Rarity","Number","Illustrator","Price"})
+@JsonPropertyOrder({"id","name","description","hp","type","stage","expansion","rarity","number","illustrator","price"})
 //ID,Name,Description,HP,Type,Stage,Expansion,Rarity,Number,Illustrator,Price
 public class PokemonCard {
     @Id
-    @Column(name = "ID",nullable = false)
-    private long id;
+    @Column(name = "id",nullable = false)
+    private String id;
 
-    @Column(name = "Name",nullable = false)
+    @Column(name = "name",nullable = false)
     private String name;
 
-    @Column(name = "Description",nullable = false,length = 1000)
+    @Column(name = "description",nullable = false,length = 1000)
     private String description;
 
-    @Column(name = "HP",nullable = false)
+    @Column(name = "hp",nullable = false)
     private long hp;
 
-    @Column(name = "Type",nullable = false)
+    @Column(name = "type",nullable = false)
     private String type;
 
-    @Column(name = "Stage",nullable = false)
+    @Column(name = "stage",nullable = false)
     private String stage;
 
-    @Column(name = "Expansion",nullable = false)
+    @Column(name = "expansion",nullable = false)
     private String Expansion;
 
-    @Column(name = "Rarity",nullable = false)
+    @Column(name = "rarity",nullable = false)
     private String Rarity;
 
-    @Column(name = "Number",nullable = false)
+    @Column(name = "number",nullable = false)
     private String number;
 
-    @Column(name = "Illustrator",nullable = false)
+    @Column(name = "illustrator",nullable = false)
     private String Illustrator;
 
-    @Column(name = "Price",nullable = false)
+    @Column(name = "price",nullable = false)
     private double price;
 
 
