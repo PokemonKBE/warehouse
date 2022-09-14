@@ -1,6 +1,7 @@
 package com.example.springbootdocker2.pokecards;
 
 import lombok.*;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,26 +9,23 @@ import java.util.List;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
+@AllArgsConstructor
+@Accessors(chain = true)
+@NoArgsConstructor
 @Table(name = "pokemondeck")
 public class PokemonCardDeck {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, unique = true)
-    private long id;
+    @Column(name = "id", nullable = false, unique = true)
+    private String id;
 
-    @Column(nullable = false)
+    @Column(name = "name",nullable = false)
     private String name;
 
     @Column
-    @ManyToMany
-    @JoinTable
+    @OneToMany
+//    @JoinTable
     private List<PokemonCard> pokemonCardList;
-
-
-
 }
+

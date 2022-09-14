@@ -4,7 +4,6 @@ package com.example.springbootdocker2.pokecards;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.*;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import javax.persistence.*;
 
