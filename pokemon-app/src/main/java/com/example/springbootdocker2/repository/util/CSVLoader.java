@@ -16,8 +16,8 @@ import java.util.Objects;
 @Configuration
 public class CSVLoader {
 
-    final static String POKEMONCARD_CSV = "F:\\Webstorm\\kbe-project\\warehouse\\pokemon-app\\src\\main\\resources\\PokemonInfo.csv";
-    final static String POKEMONDECK_CSV = "F:\\Webstorm\\kbe-project\\warehouse\\pokemon-app\\src\\main\\resources\\PokemonDeck.csv";
+    final static String POKEMONCARD_CSV = "src/main/resources/PokemonDeck.csv";
+    final static String POKEMONDECK_CSV = "src/main/resources/PokemonInfo.csv";
     private final PokemonCardCSVImporter pokemonCardCsvImporter = new PokemonCardCSVImporter();
     private final PokemonCardDeckCSVImporter pokemonCardDeckCsvImporter = new PokemonCardDeckCSVImporter();
 

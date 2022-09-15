@@ -1,6 +1,7 @@
 version: "3.8"
 services:
   mysqldb:
+    container_name: mysql1db
     image: mysql:5.7
     restart: unless-stopped
     env_file: ./.env
@@ -15,7 +16,6 @@ services:
     depends_on:
       - mysqldb
     build: ./pokemon-app
-    restart: on-failure
     env_file: ./.env
     ports:
       - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
