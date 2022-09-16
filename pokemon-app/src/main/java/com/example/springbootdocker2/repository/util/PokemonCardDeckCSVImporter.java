@@ -18,22 +18,29 @@ import java.util.stream.Collectors;
 public class PokemonCardDeckCSVImporter {
 
     public List<PokemonCardDeck> importCardDeckFromCsv(String fileName,List<PokemonCard> pokemonCardList){
-        return importLinesFromCsv(fileName).stream().map(elem -> createPokemonCardDeck(pokemonCardList,elem)).collect(Collectors.toList());
+        List<PokemonCardDeck> res = importLinesFromCsv(fileName).stream()
+                .map(elem -> createPokemonCardDeck(pokemonCardList,elem))
+                .collect(Collectors.toList());
+
+        return res;
     }
 
     private PokemonCardDeck createPokemonCardDeck(List<PokemonCard> pokemonCardList, List<String> elem) {
         var list = createPokemonCardList(pokemonCardList,elem.get(2));
 
-        return new PokemonCardDeck().setId(elem.get(0)).setName(elem.get(1)).setPokemonCardList(list);
+        return new PokemonCardDeck()
+                .setId(Integer.parseInt(elem.get(0)))
+                .setName(elem.get(1))
+                .setPokemonCardList(list);
     }
 
     private List<PokemonCard> createPokemonCardList(List<PokemonCard> pokemonCardList, String elem) {
-        return Arrays.stream(elem.split("-")).map(cards -> pokemonCardList.get(Integer.parseInt(cards))).collect(Collectors.toList());
+        return Arrays.stream(elem.split("-"))
+                .map(cards -> pokemonCardList.get(Integer.parseInt(cards)))
+                .collect(Collectors.toList());
     }
 
-
     private List<List<String>> importLinesFromCsv(String fileName) {
-
         var records = new ArrayList<List<String>>();
         try {
             var br = new BufferedReader(new FileReader(fileName));
@@ -48,6 +55,7 @@ public class PokemonCardDeckCSVImporter {
             log.error("failed loading csv file in " + this.getClass());
             return Collections.emptyList();
         }
+
         return records;
     }
 }
