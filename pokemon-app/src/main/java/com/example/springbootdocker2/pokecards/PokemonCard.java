@@ -1,9 +1,11 @@
 package com.example.springbootdocker2.pokecards;
 
 
-
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.*;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 
@@ -12,45 +14,43 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Accessors(chain = true)
 @Entity
 @Table(name = "pokemon")
-@JsonPropertyOrder({"ID","Name","Description","HP","Type","Stage","Expansion","Rarity","Number","Illustrator","Price"})
+@JsonPropertyOrder({"id", "name", "description", "hp", "type", "stage", "expansion", "rarity", "number", "illustrator", "price"})
 //ID,Name,Description,HP,Type,Stage,Expansion,Rarity,Number,Illustrator,Price
 public class PokemonCard {
     @Id
-    @Column(name = "ID",nullable = false)
-    private long id;
+    @Column(name = "id", nullable = false)
+    private int id;
 
-    @Column(name = "Name",nullable = false)
+    @Column
     private String name;
 
-    @Column(name = "Description",nullable = false,length = 1000)
+    @Column(length = 1000)
     private String description;
 
-    @Column(name = "HP",nullable = false)
-    private long hp;
+    @Column
+    private String hp;
 
-    @Column(name = "Type",nullable = false)
+    @Column
     private String type;
 
-    @Column(name = "Stage",nullable = false)
+    @Column
     private String stage;
 
-    @Column(name = "Expansion",nullable = false)
-    private String Expansion;
+    @Column
+    private String expansion;
 
-    @Column(name = "Rarity",nullable = false)
-    private String Rarity;
+    @Column
+    private String rarity;
 
-    @Column(name = "Number",nullable = false)
+    @Column
     private String number;
 
-    @Column(name = "Illustrator",nullable = false)
-    private String Illustrator;
+    @Column
+    private String illustrator;
 
-    @Column(name = "Price",nullable = false)
-    private double price;
-
-
+    @Column
+    private String price;
 }
