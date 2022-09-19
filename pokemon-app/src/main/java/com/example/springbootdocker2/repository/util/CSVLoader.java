@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.dao.DataIntegrityViolationException;
 
 import java.util.List;
 
@@ -22,11 +23,17 @@ public class CSVLoader {
     @Bean
     CommandLineRunner initializeDatabase(CardRepository pokemonCardRepository, DeckRepository deckRepository) {
         return args -> {
-            List<PokemonCard> pokemonCardList = pokemonCardCsvImporter.getPokemonCardDataFromCSV(POKEMONCARD_CSV);
 
-            pokemonCardRepository.saveAll(pokemonCardList);
+            try{
+                List<PokemonCard> pokemonCardList = pokemonCardCsvImporter.getPokemonCardDataFromCSV(POKEMONCARD_CSV);
 
-            deckRepository.saveAll(pokemonCardDeckCsvImporter.importCardDeckFromCsv(POKEMONDECK_CSV,pokemonCardList));
+                pokemonCardRepository.saveAll(pokemonCardList);
+
+                deckRepository.saveAll(pokemonCardDeckCsvImporter.importCardDeckFromCsv(POKEMONDECK_CSV,pokemonCardList));
+            }catch (DataIntegrityViolationException e){
+                log.error("Database already exists "+e);
+            }
+
         };
     }
 }

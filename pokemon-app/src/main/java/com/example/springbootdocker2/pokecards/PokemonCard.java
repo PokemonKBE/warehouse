@@ -8,6 +8,7 @@ import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 
 @Getter
@@ -52,5 +53,5 @@ public class PokemonCard {
     private String illustrator;
 
     @Column
-    private String price;
+    private BigDecimal price;
 }
