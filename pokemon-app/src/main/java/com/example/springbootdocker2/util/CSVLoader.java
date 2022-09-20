@@ -1,4 +1,4 @@
-package com.example.springbootdocker2.repository.util;
+package com.example.springbootdocker2.util;
 
 import com.example.springbootdocker2.pokecards.PokemonCard;
 import com.example.springbootdocker2.repository.CardRepository;
@@ -18,7 +18,7 @@ public class CSVLoader {
     final static String POKEMONCARD_CSV = "csv/PokemonCards.csv";
     final static String POKEMONDECK_CSV = "csv/PokemonDeck.csv";
     private final PokemonCardCSVImporter pokemonCardCsvImporter = new PokemonCardCSVImporter();
-    private final PokemonCardDeckCSVImporter pokemonCardDeckCsvImporter = new PokemonCardDeckCSVImporter();
+    private final PokemonDeckCSVImporter pokemonDeckCsvImporter = new PokemonDeckCSVImporter();
 
     @Bean
     CommandLineRunner initializeDatabase(CardRepository pokemonCardRepository, DeckRepository deckRepository) {
@@ -29,7 +29,7 @@ public class CSVLoader {
 
                 pokemonCardRepository.saveAll(pokemonCardList);
 
-                deckRepository.saveAll(pokemonCardDeckCsvImporter.importCardDeckFromCsv(POKEMONDECK_CSV,pokemonCardList));
+                deckRepository.saveAll(pokemonDeckCsvImporter.importDeckFromCsv(POKEMONDECK_CSV,pokemonCardList));
             }catch (DataIntegrityViolationException e){
                 log.error("Database already exists "+e);
             }

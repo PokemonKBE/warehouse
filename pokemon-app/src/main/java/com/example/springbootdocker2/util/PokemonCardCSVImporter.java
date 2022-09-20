@@ -1,7 +1,6 @@
-package com.example.springbootdocker2.repository.util;
+package com.example.springbootdocker2.util;
 
 import com.example.springbootdocker2.pokecards.PokemonCard;
-import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvParser;
