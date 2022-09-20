@@ -14,7 +14,7 @@ import java.util.List;
 @Accessors(chain = true)
 @NoArgsConstructor
 @Table(name = "pokemondeck")
-public class PokemonCardDeck {
+public class PokemonDeck {
 
     @Id
     @Column(name = "id", nullable = false, unique = true)
@@ -24,8 +24,8 @@ public class PokemonCardDeck {
     private String name;
 
     @Column
-    @OneToMany
-//    @JoinTable
+    @ManyToMany
+    @JoinTable
     private List<PokemonCard> pokemonCardList;
 }
 

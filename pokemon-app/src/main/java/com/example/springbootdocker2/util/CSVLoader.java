@@ -1,4 +1,4 @@
-package com.example.springbootdocker2.repository.util;
+package com.example.springbootdocker2.util;
 
 import com.example.springbootdocker2.pokecards.PokemonCard;
 import com.example.springbootdocker2.repository.CardRepository;
@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.dao.DataIntegrityViolationException;
 
 import java.util.List;
 
@@ -17,16 +18,22 @@ public class CSVLoader {
     final static String POKEMONCARD_CSV = "csv/PokemonCards.csv";
     final static String POKEMONDECK_CSV = "csv/PokemonDeck.csv";
     private final PokemonCardCSVImporter pokemonCardCsvImporter = new PokemonCardCSVImporter();
-    private final PokemonCardDeckCSVImporter pokemonCardDeckCsvImporter = new PokemonCardDeckCSVImporter();
+    private final PokemonDeckCSVImporter pokemonDeckCsvImporter = new PokemonDeckCSVImporter();
 
     @Bean
     CommandLineRunner initializeDatabase(CardRepository pokemonCardRepository, DeckRepository deckRepository) {
         return args -> {
-            List<PokemonCard> pokemonCardList = pokemonCardCsvImporter.getPokemonCardDataFromCSV(POKEMONCARD_CSV);
 
-            pokemonCardRepository.saveAll(pokemonCardList);
+            try{
+                List<PokemonCard> pokemonCardList = pokemonCardCsvImporter.getPokemonCardDataFromCSV(POKEMONCARD_CSV);
 
-            deckRepository.saveAll(pokemonCardDeckCsvImporter.importCardDeckFromCsv(POKEMONDECK_CSV,pokemonCardList));
+                pokemonCardRepository.saveAll(pokemonCardList);
+
+                deckRepository.saveAll(pokemonDeckCsvImporter.importDeckFromCsv(POKEMONDECK_CSV,pokemonCardList));
+            }catch (DataIntegrityViolationException e){
+                log.error("Database already exists "+e);
+            }
+
         };
     }
 }

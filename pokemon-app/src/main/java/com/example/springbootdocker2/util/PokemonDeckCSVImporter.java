@@ -1,7 +1,7 @@
-package com.example.springbootdocker2.repository.util;
+package com.example.springbootdocker2.util;
 
 import com.example.springbootdocker2.pokecards.PokemonCard;
-import com.example.springbootdocker2.pokecards.PokemonCardDeck;
+import com.example.springbootdocker2.pokecards.PokemonDeck;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
@@ -15,20 +15,20 @@ import java.util.stream.Collectors;
 
 
 @Slf4j
-public class PokemonCardDeckCSVImporter {
+public class PokemonDeckCSVImporter {
 
-    public List<PokemonCardDeck> importCardDeckFromCsv(String fileName,List<PokemonCard> pokemonCardList){
-        List<PokemonCardDeck> res = importLinesFromCsv(fileName).stream()
-                .map(elem -> createPokemonCardDeck(pokemonCardList,elem))
+    public List<PokemonDeck> importDeckFromCsv(String fileName, List<PokemonCard> pokemonCardList){
+        List<PokemonDeck> res = importLinesFromCsv(fileName).stream()
+                .map(elem -> createPokemonDeck(pokemonCardList,elem))
                 .collect(Collectors.toList());
 
         return res;
     }
 
-    private PokemonCardDeck createPokemonCardDeck(List<PokemonCard> pokemonCardList, List<String> elem) {
+    private PokemonDeck createPokemonDeck(List<PokemonCard> pokemonCardList, List<String> elem) {
         var list = createPokemonCardList(pokemonCardList,elem.get(2));
 
-        return new PokemonCardDeck()
+        return new PokemonDeck()
                 .setId(Integer.parseInt(elem.get(0)))
                 .setName(elem.get(1))
                 .setPokemonCardList(list);

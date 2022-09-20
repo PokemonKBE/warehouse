@@ -1,13 +1,12 @@
 package com.example.springbootdocker2.pokecards;
 
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Formatter;
 
 
 @Getter
@@ -18,7 +17,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "pokemon")
 @JsonPropertyOrder({"id", "name", "description", "hp", "type", "stage", "expansion", "rarity", "number", "illustrator", "price"})
-//ID,Name,Description,HP,Type,Stage,Expansion,Rarity,Number,Illustrator,Price
 public class PokemonCard {
     @Id
     @Column(name = "id", nullable = false)
@@ -52,5 +50,5 @@ public class PokemonCard {
     private String illustrator;
 
     @Column
-    private String price;
+    private BigDecimal price;
 }

@@ -1,7 +1,7 @@
 package com.example.springbootdocker2.controller;
 
 import com.example.springbootdocker2.pokecards.PokemonCard;
-import com.example.springbootdocker2.pokecards.PokemonCardDeck;
+import com.example.springbootdocker2.pokecards.PokemonDeck;
 import com.example.springbootdocker2.repository.CardRepository;
 import com.example.springbootdocker2.repository.DeckRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +23,13 @@ public class PokemonCardController {
     @Autowired
     private DeckRepository deckRepository;
 
-
-
     @GetMapping("/pokemon-card")
     public List<PokemonCard> fetchPokemonCards(){
         return cardRepository.findAll();
     }
 
     @GetMapping("/pokemon-deck")
-    public List<PokemonCardDeck> fetchPokemonCardDecks(){
+    public List<PokemonDeck> fetchPokemonDecks(){
         return deckRepository.findAll();
     }
 
