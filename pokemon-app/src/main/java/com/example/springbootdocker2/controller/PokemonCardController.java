@@ -23,12 +23,12 @@ public class PokemonCardController {
     @Autowired
     private DeckRepository deckRepository;
 
-    @GetMapping("/pokemon-card")
+    @GetMapping("/pokemon-cards")
     public List<PokemonCard> fetchPokemonCards(){
         return cardRepository.findAll();
     }
 
-    @GetMapping("/pokemon-deck")
+    @GetMapping("/pokemon-decks")
     public List<PokemonDeck> fetchPokemonDecks(){
         return deckRepository.findAll();
     }
