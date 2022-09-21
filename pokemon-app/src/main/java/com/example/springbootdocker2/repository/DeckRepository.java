@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface DeckRepository extends JpaRepository<PokemonDeck,Integer> {
+public interface DeckRepository extends JpaRepository<PokemonDeck,Long> {
 }

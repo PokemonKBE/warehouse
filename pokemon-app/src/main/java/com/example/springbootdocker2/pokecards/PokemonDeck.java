@@ -18,7 +18,7 @@ public class PokemonDeck {
 
     @Id
     @Column(name = "id", nullable = false, unique = true)
-    private int id;
+    private long id;
 
     @Column(name = "name",nullable = false)
     private String name;
