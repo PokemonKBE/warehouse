@@ -20,7 +20,7 @@ import java.util.Formatter;
 public class PokemonCard {
     @Id
     @Column(name = "id", nullable = false)
-    private int id;
+    private long id;
 
     @Column
     private String name;

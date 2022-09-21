@@ -31,7 +31,7 @@ public class CSVLoader {
 
                 deckRepository.saveAll(pokemonDeckCsvImporter.importDeckFromCsv(POKEMONDECK_CSV,pokemonCardList));
             }catch (DataIntegrityViolationException e){
-                log.error("Database already exists "+e);
+                log.error("Database already exists. ");
             }
 
         };
