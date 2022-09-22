@@ -16,7 +16,7 @@ import java.util.List;
 public class CSVLoader {
 
     final static String POKEMONCARD_CSV = "csv/PokemonCards.csv";
-    final static String POKEMONDECK_CSV = "csv/PokemonDeck.csv";
+    final static String POKEMONDECK_CSV = "csv/PokemonDecks.csv";
     private final PokemonCardCSVImporter pokemonCardCsvImporter = new PokemonCardCSVImporter();
     private final PokemonDeckCSVImporter pokemonDeckCsvImporter = new PokemonDeckCSVImporter();
 
